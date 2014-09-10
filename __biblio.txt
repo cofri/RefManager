@@ -1,0 +1,26 @@
+%ref
+@ARTICLE{Friedrich14,
+  author = {Friedrich C. and Lafait-Boisson M.},
+  title = {un article test},
+  journal = {IEEE MTS},
+  year = {2014},
+  tags = {test ; trou noir ; pute}
+}
+
+%ref
+@ARTICLE{Friedrich15,
+  author = {Friedrich C.},
+  title = {the best article},
+  journal = {IEEE test},
+  year = {2014},
+  tags = {}
+}
+
+%ref
+@INPROCEEDINGS{Lafait13,
+  author = {Lafait-Boisson, M. and Friedrich, C.},
+  title = {un autre article},
+  journal = {Nature},
+  year = {2013},
+  tags = {pute ; chien}
+}
