@@ -1,0 +1,162 @@
+%ref
+@ARTICLE{abubakar2002imaging,
+  author = {Abubakar, Aria and Van den Berg, Peter M and Mallorqui, Jordi J},
+  title = {Imaging of biomedical data using a multiplicative regularized contrast source inversion method},
+  journal = {Microwave Theory and Techniques, IEEE Transactions on},
+  year = {2002},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2008finite,
+  author = {Abubakar, Aria and Hu, W and Van Den Berg, PM and Habashy, TM},
+  title = {A finite-difference contrast source inversion method},
+  journal = {Inverse Problems},
+  year = {2008},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2004iterative,
+  author = {Abubakar, Aria and van den Berg, Peter M},
+  title = {Iterative forward and inverse algorithms based on domain integral equations for three-dimensional electric and magnetic objects},
+  journal = {Journal of computational physics},
+  year = {2004},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2005application,
+  author = {Abubakar, Aria and van den Berg, Peter M and Habashy, Tarek M},
+  title = {Application of the multiplicative regularized contrast source inversion method on TM-and TE-polarized experimental Fresnel data},
+  journal = {Inverse Problems},
+  year = {2005},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@INPROCEEDINGS{abubakar2010multiplicative,
+  author = {Abubakar, Aria and Habashy, Tarek M},
+  title = {Multiplicative regularized Gauss-Newton approach for three-dimensional microwave imaging},
+  journal = {},
+  year = {2010},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubaker2001total,
+  author = {Abubaker, A and Van den Berg, Peter M},
+  title = {Total variation as a multiplicative constraint for solving inverse problems},
+  journal = {Image Processing, IEEE Transactions on},
+  year = {2001},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@INPROCEEDINGS{Lafait13,
+  author = {Lafait-Boisson, M. and Friedrich, C.},
+  title = {un autre article},
+  journal = {Nature},
+  year = {2013},
+  tags = {pute ; chien}
+}
+
+%ref
+@ARTICLE{abubakar2003two,
+  author = {Abubakar, A and Van den Berg, PM and Semenov, SY},
+  title = {Two-and three-dimensional algorithms for microwave imaging and inverse scattering},
+  journal = {Journal of Electromagnetic Waves and Applications},
+  year = {2003},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2012application,
+  author = {Abubakar, Aria and Habashy, Tarek M and Pan, Guangdong and Li, Mao-Kun},
+  title = {Application of the Multiplicative Regularized Gauss--Newton Algorithm for Three-Dimensional Microwave Imaging},
+  journal = {Antennas and Propagation, IEEE Transactions on},
+  year = {2012},
+  tags = {arthur ; lol ; blabla ; jacob}
+}
+
+%ref
+@ARTICLE{abubakar2012microwave,
+  author = {Abubakar, Aria and Habashy, Tarek M and Pan, Guangdong},
+  title = {Microwave Data Inversions Using the Source-Receiver Compression Scheme},
+  journal = {Antennas and Propagation, IEEE Transactions on},
+  year = {2012},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar1998three,
+  author = {Abubakar, Aria and den Berg, Peter M},
+  title = {Three-dimensional nonlinear inversion in cross-well electrode logging},
+  journal = {Radio Science},
+  year = {1998},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2004robust,
+  author = {Abubakar, Aria and Van den Berg, Peter M and Semenov, Serguei Y},
+  title = {A robust iterative method for Born inversion},
+  journal = {Geoscience and Remote Sensing, IEEE Transactions on},
+  year = {2004},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2007diagonalized,
+  author = {Abubakar, Aria and Habashy, Tarek M},
+  title = {The diagonalized contrast source inversion approach for elastic wave inversion},
+  journal = {Ultrasonics, Ferroelectrics and Frequency Control, IEEE Transactions on},
+  year = {2007},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2005diagonalized,
+  author = {Abubakar, Aria and Habashy, Tarek M and van den Berg, Peter M and Gisolf, Dries},
+  title = {The diagonalized contrast source approach: an inversion method beyond the Born approximation},
+  journal = {Inverse problems},
+  year = {2005},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{Friedrich14,
+  author = {Friedrich C. and Lafait-Boisson M.},
+  title = {un article test},
+  journal = {IEEE MTS},
+  year = {2014},
+  tags = {test ; trou noir ; pute}
+}
+
+%ref
+@ARTICLE{abubakar2009application,
+  author = {Abubakar, Aria and Hu, Wenyi and Habashy, Tarek M and van den Berg, Peter M},
+  title = {Application of the finite-difference contrast-source inversion algorithm to seismic full-waveform data},
+  journal = {Geophysics},
+  year = {2009},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{abubakar2000three,
+  author = {Abubakar, Aria and Van den Berg, Peter M},
+  title = {Three-dimensional inverse scattering applied to cross-well induction sensors},
+  journal = {Geoscience and Remote Sensing, IEEE Transactions on},
+  year = {2000},
+  tags = {coucou ; lol ; neige ; pluie}
+}
+
+%ref
+@ARTICLE{Friedrich15,
+  author = {Friedrich C.},
+  title = {the best article},
+  journal = {IEEE test},
+  year = {2014},
+  tags = {}
+}
+
