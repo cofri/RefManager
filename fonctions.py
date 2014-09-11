@@ -52,9 +52,9 @@ def readBibFile(filename,frameRef,frameTag) :
 			author = ''
 
 		data[uid] = {'UID':uid,'refType':refType,'Title':title,'Journal':journal,'Year':year,'Authors':author,
-			'Tags':['coucou','lol','neige','pluie']}
-		if uid == 'abubakar2012application' :
-			data[uid]['Tags'] = ['arthur','lol','blabla','jacob']
+			'Tags':['no tag']}
+#		if uid == 'abubakar2012application' :
+#			data[uid]['Tags'] = ['arthur','lol','blabla','jacob']
 
 	"""
 	model = TableModel()
