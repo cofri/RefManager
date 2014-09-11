@@ -98,68 +98,6 @@ class ChoixTag:
             row += 1
 
 
-###############################################################################################
-######## CLASS VisuRef ########
-class VisuRef:
-
-    def __init__(self, master):
-
-	frame = master
-	#frame.pack()
-        #frame = Frame(master)
-        #frame.pack()
-
-        #frame.grid_columnconfigure(1, weight=1)
-        #Label(frame, text="UID", anchor="w").grid(row=0, column=0, sticky="ew")
-        #Label(frame, text="Title", anchor="w").grid(row=0, column=1, sticky="ew")
-	#data = [['uid1','title 1'],['uid2','title 2'],['uid3','title 3']]
-        #row = 1
-        #for (uid, title) in data:
-        #    nr_label = Label(frame, text=uid, anchor="w")
-        #    nr_title = Label(frame, text=title, anchor="w")
-        #    nr_label.grid(row=row, column=0, sticky="ew")
-        #    nr_title.grid(row=row, column=1, sticky="ew")
-        #    row += 1
-	"""
-	parser = bibtex.Parser()
-	#bib_data = parser.parse_file('biblio_test.bib')
-	#bib_data = parser.parse_file('/users/cofri/IRCCyN_2014-07-17/Documents/These/Articles/biblio_local_old.bib')
-	bib_data = parser.parse_file('biblio_local_old.bib')
-	data = {}
-	for i,entry in enumerate(bib_data.entries) :
-		uid = str(bib_data.entries.keys()[i])
-		tmp = bib_data.entries[bib_data.entries.keys()[i]]
-		try :
-			title = str(tmp.fields['title'])
-		except :
-			title = ''
-		try :
-			journal = str(tmp.fields['journal'])
-		except :
-			journal = ''
-		try :
-			year = int(tmp.fields['year'])
-		except :
-			year = ''
-		try :
-			author = str(tmp.fields['author'])
-		except :
-			author = ''
-		data[uid] = {'UID':uid,'Title':title,'Journal':journal,'Year':year,'Authors':author}
-	#"""
-	#print "data = "
-	#print data
-	"""
-	order_labels = {'UID':0,'Title':1,'Authors':2,'Journal':3,'Year':4}
-	order_labels2 = {0:'UID',1:'Title',2:'Authors',3:'Journal',4:'Year'}
-	model = TableModel()
-	model.importDict(data)
-	model.columnNames = ['UID','Title','Authors','Journal','Year']
-	self.table = TableCanvas(frame, model=model)
-	self.table.createTableFrame()
-	self.table.redrawTable()
-	#"""
-
 
 ###############################################################################################
 ######## CLASS mainMenu ########
@@ -183,8 +121,9 @@ class MainMenu :
 	# create more pulldown menus
 	editmenu = Menu(menubar, tearoff=0)
 	editmenu.add_command(label="Create new tag", command= lambda :createNewTag(frameRef,frameTag))
-	editmenu.add_command(label="Delete tag", command=lambda : printText())
+	editmenu.add_command(label="Delete tag(s)", command=lambda : deleteTags(frameTag,frameRef))
 	editmenu.add_command(label="Edit reference", command=lambda : editRef(frameRef,frameTag))
+	editmenu.add_command(label="Remove reference(s)", command=lambda : deleteRefs(frameRef))
 	menubar.add_cascade(label="Edit", menu=editmenu)
 
 	helpmenu = Menu(menubar, tearoff=0)

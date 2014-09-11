@@ -102,7 +102,7 @@ def append_tags(data) :
 def display_tags(data,frameRef,frameTag) :
 
 	global listTags
-	#print "type tag = " + str(type(tags))
+
         dlist = [[tag,False] for tag in listTags]
 
 	frameTag.grid()
@@ -113,22 +113,12 @@ def display_tags(data,frameRef,frameTag) :
         row = 1
 	buttons = {}
         for (tag, active) in dlist:
-            #nr_label = Label(frameTag, text=tag, anchor="w")
-            #active_cb = Checkbutton(frameTag, onvalue=True, offvalue=False)#,command= lambda: filter_tag(data,frameRef,frameTag,tag,active_cb))
-            #if active:
-            #    active_cb.select()
-            #else:
-            #    active_cb.deselect()
-            #nr_label.grid(row=row, column=0, sticky="ew")
-            #active_cb.grid(row=row, column=1, sticky="ew")
 	    buttons[tag] = Button(frameTag,text=tag)
 	    buttons[tag].grid(row=row, column=0, sticky="ew")
 	    buttons[tag].configure(command=lambda tag=tag :filter_tag(data,listTags,frameRef,frameTag,buttons,tag))
 
             row += 1
 
-	#for key in buttons :
-	    #print buttons[key].cget('bg')
 
 
 def filter_tag(data,tags,frameRef,frameTag,buttons,tag) :
@@ -321,31 +311,177 @@ def editRef(frameRef,frameTag) :
     global data, listTags
 
     editwin = Tk()
-    Label(editwin,text="Choose references :").pack()
-    listbox1 = Listbox(editwin,selectmode = "multiple")
-    listbox1.pack()
-    for ref in data :
-	listbox1.insert(END,ref)
-    selbut1 = Button(editwin,text="Select refs")
-    selbut1.pack()
+    editwin.title('Edit a reference')
+    editwin.geometry(("800x600"))
 
-    Label(editwin,text="Choose tags :").pack(side=RIGHT)
-    listbox2 = Listbox(editwin,selectmode = "multiple")
-    listbox2.pack(side=RIGHT)
-    for tag in listTags :
-	listbox2.insert(END,tag)
-    selbut2 = Button(editwin,text="Select tags",command = lambda: addTagstoRefs(listbox2))
-    selbut2.pack(side=RIGHT)
+    var = StringVar(editwin)
+    options = [] 
+    for key in data :
+      options.append(key)
+    var.set("Select a reference") # initial value
+    option = OptionMenu(editwin, var, *options)
+    option.pack()
+    ref_sel = var.get()
+    print ref_sel
+    selbut1 = Button(editwin,text="Confirm ref",command= lambda: chooseRef(editwin,var,frameRef))
+    selbut1.pack()
 
     editwin.mainloop()
 
-def addTagstoRefs(listbox) :
+###############################################################################################################
+def chooseRef(editwin,option,frameRef) :
+
+    global data,listTags
+
+    ref_sel = option.get()
+    ref_sel = data[ref_sel]
+
+    Label(editwin,text="UID :").pack()
+    s_uid = StringVar(editwin)
+    s_uid.set(ref_sel['UID'])
+    e_uid = Entry(editwin,textvariable=s_uid,width=300)
+    e_uid.pack()
+
+    Label(editwin,text="Type of reference :").pack()
+    s_refType = StringVar(editwin)
+    s_refType.set(ref_sel['refType'])
+    e_refType = Entry(editwin,textvariable=s_refType,width=300)
+    e_refType.pack()
+
+    Label(editwin,text="Title :").pack()
+    s_title = StringVar(editwin)
+    s_title.set(ref_sel['Title'])
+    e_title = Entry(editwin,textvariable=s_title,width=300)
+    e_title.pack()
+
+    Label(editwin,text="Authors :").pack()
+    s_authors = StringVar(editwin)
+    text_aut = " and ".join(ref_sel['Authors'])
+    s_authors.set(text_aut)
+    e_authors = Entry(editwin,textvariable=s_authors,width=300)
+    e_authors.pack()
+
+    Label(editwin,text="Journal :").pack()
+    s_journal = StringVar(editwin)
+    s_journal.set(ref_sel['Journal'])
+    e_journal = Entry(editwin,textvariable=s_journal,width=300)
+    e_journal.pack()
+
+    Label(editwin,text="Year :").pack()
+    s_year = StringVar(editwin)
+    s_year.set(ref_sel['Year'])
+    e_year = Entry(editwin,textvariable=s_year,width=300)
+    e_year.pack()
+
+    selbut2 = Button(editwin,text="Update reference then change tags",
+	command = lambda: updateRef(editwin,e_uid,e_refType,e_title,e_authors,e_journal,e_year,frameRef,ref_sel))
+    selbut2.pack()
+
+
+###############################################################################################################
+def updateRef(editwin,e_uid,e_refType,e_title,e_authors,e_journal,e_year,frameRef,ref_sel) :
     
     global data, listTags
     
+    Label(editwin,text="Tags :").pack()
+    listbox2 = Listbox(editwin,selectmode = "multiple")
+    listbox2.pack()
+    for tag in listTags :
+	listbox2.insert(END,tag)
+	if tag in ref_sel['Tags'] :
+	  listbox2.selection_set(first=END)
+
+    selbut3 = Button(editwin,text="Update tags",command = lambda: updateRef2(editwin,e_uid,e_refType,e_title,e_authors,e_journal,e_year,listbox2,frameRef))
+    selbut3.pack()
+
+###############################################################################################################
+def updateRef2(editwin,e_uid,e_refType,e_title,e_authors,e_journal,e_year,listbox,frameRef) :
+    
+    global data, listTags
+
     items = listbox.curselection()
     items = [listTags[int(item)] for item in items]
-    print items
+    authors = e_authors.get().split(" and ")
+    data[e_uid.get()] = {'UID':e_uid.get(),'refType':e_refType.get(),'Title':e_title.get(),'Authors':authors,
+      'Journal':e_journal.get(),'Year':int(e_year.get()),'Tags':items}
+
+    drawTable(data,frameRef)
+    editwin.destroy()
 
 
-    
+###############################################################################################################
+def deleteTags(frameTag,frameRef) :
+
+    global data, listTags
+
+    tagwin = Tk()
+    Label(tagwin,text="Tags to delete :").pack()
+    listbox2 = Listbox(tagwin,selectmode = "multiple")
+    listbox2.pack()
+    for tag in listTags :
+	listbox2.insert(END,tag)
+    Button(tagwin,text="Delete",command=lambda : deleteSelTags(tagwin,frameRef,frameTag,listbox2)).pack()
+
+    tagwin.mainloop()
+
+
+def deleteSelTags(tagwin,frameRef,frameTag,listbox) :
+	global data, listTags
+	items = listbox.curselection()
+    	items = [listTags[int(item)] for item in items]
+
+	listtags2 = listTags[:]
+	for ind,tag in enumerate(listTags) :
+	  if tag in items :
+	    print "remove tag " + tag
+	    listtags2.remove(tag) 
+	listTags = listtags2[:]
+
+	data2 = deepcopy(data)
+	for key in data :
+	  for ind,tag in enumerate(data[key]['Tags']) :
+	    if tag in items :
+	      data2[key]['Tags'].remove(tag)
+
+	data = deepcopy(data2)
+	tagwin.destroy()
+	display_tags(data,frameRef,frameTag)
+	drawTable(data,frameRef)
+
+
+###############################################################################################################
+
+def deleteRefs(frameRef) :
+
+    global data, listTags
+
+    refwin = Tk()
+    Label(refwin,text="Tags to delete :").pack()
+    listbox = Listbox(refwin,selectmode = "multiple")
+    listbox.pack()
+    for key in data :
+	listbox.insert(END,key)
+    Button(refwin,text="Delete",command=lambda : deleteSelRefs(refwin,frameRef,listbox)).pack()
+
+    tagwin.mainloop()
+
+
+def deleteSelRefs(refwin,frameRef,listbox) :
+
+	global data, listTags
+	items = listbox.curselection()
+    	items = [data.keys()[int(item)] for item in items]
+
+	data2 = deepcopy(data)
+	for key in data :
+	    if key in items :
+	      del data2[key]
+
+	data = deepcopy(data2)
+	refwin.destroy()
+	drawTable(data,frameRef)
+
+
+###############################################################################################################
+
+
